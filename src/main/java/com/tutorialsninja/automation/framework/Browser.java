@@ -56,7 +56,7 @@ public class Browser {
 			return ((TakesScreenshot)Base.driver).getScreenshotAs(OutputType.BYTES);
 		}
 		catch(Exception e){
-			log.info("Exception has Occured while taking screenshot");
+			log.info("Exception has Occured while taking");
 			return null;
 		}
 
