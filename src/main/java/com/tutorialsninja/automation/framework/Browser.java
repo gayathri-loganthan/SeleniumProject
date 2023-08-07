@@ -20,37 +20,30 @@ public class Browser {
 	public static WebDriver startBrowser() {
 		String browser = Base.reader.getBrowser().toLowerCase();
 		log.info("Selected Browser is: "+browser);
-		switch (browser) {
-
-		case "chrome":
+		if (browser.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			Base.driver = new ChromeDriver();
 			log.info("Chrome Browser is Started" + Base.driver.hashCode());
 			return Base.driver;
-
-		case "ie":
+		} else if (browser.equals("ie")) {
 			WebDriverManager.iedriver().setup();
 			Base.driver = new InternetExplorerDriver();
 			log.info("Internet Explorer Browser is Started" + Base.driver.hashCode());
 			return Base.driver;
-
-		case "opera":
+		} else if (browser.equals("opera")) {
 			WebDriverManager.operadriver().setup();
 			Base.driver = new OperaDriver();
 			log.info("Opera Browser is Started" + Base.driver.hashCode());
 			return Base.driver;
-
-		case "htmlunit":
+		} else if (browser.equals("htmlunit")) {
 			Base.driver = new HtmlUnitDriver();
 			log.info("HtmlUnit Browser is Started" + Base.driver.hashCode());
 			return Base.driver;
-
-		default:
-			WebDriverManager.firefoxdriver().setup();
-			Base.driver = new FirefoxDriver();
-			log.info("Firefox Browser is Started" + Base.driver.hashCode());
-			return Base.driver;
 		}
+		WebDriverManager.firefoxdriver().setup();
+		Base.driver = new FirefoxDriver();
+		log.info("Firefox Browser is Started" + Base.driver.hashCode());
+		return Base.driver;
 
 	}
 
